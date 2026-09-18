@@ -1,3 +1,5 @@
+package Act1;
+
 public class MultiplicacioS {
     private int operador1;
     private int operador2;

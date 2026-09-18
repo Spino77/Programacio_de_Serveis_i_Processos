@@ -1,3 +1,5 @@
+package Act1;
+
 import java.util.concurrent.Callable;
 
 public class Multiplicacio implements Callable<Integer> {
