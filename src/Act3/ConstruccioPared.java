@@ -1,24 +1,34 @@
 package Act3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ConstruccioPared {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 
-        Paleta p1 = new Paleta();
-        Paleta p2 = new Paleta();
-        Paleta p3 = new Paleta();
-        Paleta p4 = new Paleta();
+        List<Paleta> paletas = new ArrayList<>();
 
-        executor.execute(p1);
-        executor.execute(p2);
-        executor.execute(p3);
-        executor.execute(p4);
+        long timeCurrent = System.currentTimeMillis();
+
+        for (int i = 0; i < 4; i++) {
+            Paleta paleta = new Paleta();
+            paletas.add(paleta);
+        }
+
+        for (int i = 0; i < paletas.size(); i++) {
+            executor.execute(paletas.get(i));
+        }
+
         executor.shutdown();
+        executor.awaitTermination(Long.MAX_VALUE, TimeUnit.SECONDS);
 
-        System.out.println("fet");
+        long timeFinal = System.currentTimeMillis();
+
+        System.out.println("Pared construida en: " + ((timeFinal - timeCurrent) / 1000) + " segons");
     }
 }
 
