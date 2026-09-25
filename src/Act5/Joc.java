@@ -23,7 +23,7 @@ public class Joc {
             executor.scheduleWithFixedDelay(llista.get(i), 1, varTems, TimeUnit.SECONDS);
         }
 
-        executor.awaitTermination(15, TimeUnit.SECONDS);
+        executor.awaitTermination(10, TimeUnit.SECONDS);
         executor.shutdown();
 
         int guanyador = 1;

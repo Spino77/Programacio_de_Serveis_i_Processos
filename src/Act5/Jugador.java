@@ -4,8 +4,8 @@ public class Jugador {
     private String nom;
     private int punts;
 
-    public void setPunts(int punts) {
-        this.punts = punts;
+    public void addPunts(int punts) {
+        this.punts += punts;
     }
 
     public int getPunts() {
