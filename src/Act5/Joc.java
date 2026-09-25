@@ -33,7 +33,7 @@ public class Joc {
                 guanyador = i;
             }
         }
-        System.out.println("Jugador " + guanyador + " ha guanyat amb: " + llista.get(guanyador).jugador.getPunts() + " punts.");
+        System.out.println("Jugador " + (guanyador + 1) + " ha guanyat amb: " + llista.get(guanyador).jugador.getPunts() + " punts.");
     }
 }
 
