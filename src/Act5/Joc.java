@@ -19,7 +19,7 @@ public class Joc {
         }
 
         for (int i = 0; i < numJugadors; i++) {
-            long varTems = (long) (Math.random() * 10);
+            long varTems = (long) (Math.random() * 10 + 1);
             executor.scheduleWithFixedDelay(llista.get(i), 1, varTems, TimeUnit.SECONDS);
         }
 
