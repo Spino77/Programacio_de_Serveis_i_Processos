@@ -10,12 +10,11 @@ public class DivisionTask extends RecursiveTask<Integer> {
     }
 
     private int DivisionS() {
-        System.out.println(n);
-        return n / 3;
+        return n;
     }
 
     private int DivisionR() {
-        System.out.println(n);
+        System.out.println("Resta: " + (n));
         DivisionTask d1 = new DivisionTask(n - 3);
         invokeAll(d1);
         return d1.join();
@@ -29,10 +28,11 @@ public class DivisionTask extends RecursiveTask<Integer> {
 
 
     public static void main(String[] args) {
-        int n = 25;
+        int n = 24;
         DivisionTask task = new DivisionTask(n);
         ForkJoinPool pool = new ForkJoinPool();
         pool.submit(task);
         int resultat = task.join();
+        System.out.println("Final: " + resultat);
     }
 }
