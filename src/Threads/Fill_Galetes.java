@@ -16,10 +16,10 @@ public class Fill_Galetes extends Thread {
                 pot.agafarGaleta();
                 System.out.println("Fill " + nom + " s'ha menjat una galeta.");
 
-                Thread.sleep((int) (Math.random() * 300) + 100);
+                Thread.sleep((int) (Math.random() * 600) + 100);
 
                 pot.deixarPot();
-                Thread.sleep((int) (Math.random() * 800) + 100);
+                Thread.sleep((int) (Math.random() * 1400) + 100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

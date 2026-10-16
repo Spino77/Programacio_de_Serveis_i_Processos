@@ -15,7 +15,7 @@ public class Pare_Galetes extends Thread{
             try {
                 pot.posarGaleta();
                 pot.deixarPot();
-                Thread.sleep((int) (Math.random() * 800) + 100);
+                Thread.sleep((int) (Math.random() * 1400) + 100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
