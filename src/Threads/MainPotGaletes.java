@@ -2,7 +2,7 @@ package Threads;
 
 public class MainPotGaletes {
     public static void main(String[] args) {
-        PotGaletes pot = new PotGaletes(10);
+        PotGaletes pot = new PotGaletes(0);
         Pare_Galetes pare = new Pare_Galetes(pot,"Pare");
         Fill_Galetes fill1 = new Fill_Galetes(pot, "Fill1");
         Fill_Galetes fill2 = new Fill_Galetes(pot, "Fill2");

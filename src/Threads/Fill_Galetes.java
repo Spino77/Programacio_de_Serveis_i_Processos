@@ -10,11 +10,12 @@ public class Fill_Galetes extends Thread {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         for (;;) {
             try {
-                System.out.println("Fill " + nom + " s'ha menjat una galeta.");
                 pot.agafarGaleta();
+                System.out.println("Fill " + nom + " s'ha menjat una galeta.");
+
                 Thread.sleep((int) (Math.random() * 300) + 100);
 
                 pot.deixarPot();

@@ -10,10 +10,9 @@ public class Pare_Galetes extends Thread{
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         for (;;) {
             try {
-                System.out.println("El pare ha deixat una galeta dins el pot.");
                 pot.posarGaleta();
                 pot.deixarPot();
                 Thread.sleep((int) (Math.random() * 800) + 100);
