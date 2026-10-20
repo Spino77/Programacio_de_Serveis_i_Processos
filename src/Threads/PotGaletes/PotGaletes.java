@@ -1,4 +1,4 @@
-package Threads;
+package Threads.PotGaletes;
 
 public class PotGaletes {
     private boolean disponible = true;
