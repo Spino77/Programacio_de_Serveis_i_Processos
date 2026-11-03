@@ -23,7 +23,6 @@ public class Encadellador extends Thread {
                 Thread.sleep((long) (Math.random()* 1000) + 100);
                 System.out.println(nom + " ha acabat un jersei.");
 
-                System.out.println(nom + " ha depositat al cistell.");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

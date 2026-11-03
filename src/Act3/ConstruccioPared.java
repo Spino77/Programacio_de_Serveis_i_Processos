@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class ConstruccioPared {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
-
+/*
         List<Paleta> paletas = new ArrayList<>();
 
         long timeCurrent = System.currentTimeMillis();
@@ -29,6 +29,7 @@ public class ConstruccioPared {
         long timeFinal = System.currentTimeMillis();
 
         System.out.println("Pared construida en: " + ((timeFinal - timeCurrent) / 1000) + " segons");
+  */
     }
 }
 
