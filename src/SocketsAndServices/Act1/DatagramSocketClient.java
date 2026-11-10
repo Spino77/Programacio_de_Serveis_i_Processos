@@ -34,14 +34,11 @@ public class DatagramSocketClient {
             packet = new DatagramPacket(receivedData, 1024);
             //espera de les dades, màxim 5 segons
             socket.setSoTimeout(5000);
-            try{
-                //espera de les dades
-                socket.receive(packet);
-                //processament de les dades rebudes i obtenció de la resposta
-                sendingData = getDataToRequest(packet.getData(), packet.getLength());
-            }catch(SocketTimeoutException e){
-                sendingData = timeoutExceded(packet);
-            }
+
+            //espera de les dades
+            socket.receive(packet);
+            //processament de les dades rebudes i obtenció de la resposta
+            sendingData = getDataToRequest(packet.getData(), packet.getLength());
         }
     }
 
