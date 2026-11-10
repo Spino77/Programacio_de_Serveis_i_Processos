@@ -1,10 +1,10 @@
-package Examen.Ex1;
+package ProcessesAndThreads.Examen.Ex1;
 
 public class Profecia extends Thread{
     private Clau c;
 
-    public Profecia(Clau c) {
-        this.c = c;
+    public Profecia(Clau clau) {
+        c = clau;
     }
 
     @Override

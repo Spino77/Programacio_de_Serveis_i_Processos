@@ -1,4 +1,4 @@
-package Examen.Ex1;
+package ProcessesAndThreads.Examen.Ex1;
 
 public class MainCiutatMagica {
     public static void main(String[] args) {

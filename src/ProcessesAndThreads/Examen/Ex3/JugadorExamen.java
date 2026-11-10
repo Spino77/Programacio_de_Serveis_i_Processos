@@ -1,12 +1,10 @@
-package Examen.Ex3;
+package ProcessesAndThreads.Examen.Ex3;
 
-import java.util.concurrent.Callable;
-
-class Jugador implements Runnable {
+class JugadorExamen implements Runnable {
     private String nom;
     private int numEntrenos;
 
-    public Jugador(String nom, int numPartits) {
+    public JugadorExamen(String nom, int numPartits) {
         this.nom = nom;
         this.numEntrenos = numPartits;
     }

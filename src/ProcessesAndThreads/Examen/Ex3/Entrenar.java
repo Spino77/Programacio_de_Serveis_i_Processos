@@ -1,5 +1,4 @@
-package Examen.Ex3;
-
+package ProcessesAndThreads.Examen.Ex3;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -13,14 +12,14 @@ public class Entrenar {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(11);
 
         // Instanciem els jugadors
-        List<Jugador> jugadors = new ArrayList<>();
+        List<JugadorExamen> jugadors = new ArrayList<>();
 
         // Comencem a contar el temps
         long ti = System.currentTimeMillis();
 
         // Donem nom als jugadors i els posem a jugar els partits
         for (int i = 0; i < numJugadors; i++) {
-            jugadors.add(new Jugador("Jugador-" + i, numEntrenos));
+            jugadors.add(new JugadorExamen("Jugador " + i , numEntrenos));
         }
 
         for (int i = 0; i < numJugadors; i++) {

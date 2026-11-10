@@ -1,4 +1,4 @@
-package Examen.Ex1;
+package ProcessesAndThreads.Examen.Ex1;
 
 public class Clau {
     public int valor_profecia = 3;

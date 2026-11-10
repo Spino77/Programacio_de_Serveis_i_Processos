@@ -1,4 +1,4 @@
-package Examen.Ex1;
+package ProcessesAndThreads.Examen.Ex1;
 
 public class Guardia extends Thread{
     private Clau c;

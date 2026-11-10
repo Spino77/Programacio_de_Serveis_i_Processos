@@ -10,9 +10,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(3);
-        List<Multiplicacio> llistaTasques= new ArrayList<Multiplicacio>();
+        List<Act1.Multiplicacio> llistaTasques= new ArrayList<Act1.Multiplicacio>();
         for (int i = 0; i < 10; i++) {
-            Multiplicacio calcula = new Multiplicacio((int)(Math.random()*10), (int)(Math.random()*10));
+            Act1.Multiplicacio calcula = new Act1.Multiplicacio((int)(Math.random()*10), (int)(Math.random()*10));
             llistaTasques.add(calcula);
         }
         List <Future<Integer>> llistaResultats;
