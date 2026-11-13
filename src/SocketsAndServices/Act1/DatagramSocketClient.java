@@ -1,15 +1,20 @@
 package SocketsAndServices.Act1;
-
 import java.io.IOException;
 import java.net.*;
+import java.util.Scanner;
 
 public class DatagramSocketClient {
     InetAddress serverIP;
     int serverPort;
     DatagramSocket socket;
+    Scanner sc;
+    String nom;
 
-    public void init(String host, int port) throws SocketException,
-            UnknownHostException {
+    public DatagramSocketClient() {
+        sc = new Scanner(System.in);
+    }
+
+    public void init(String host, int port) throws SocketException, UnknownHostException {
         serverIP = InetAddress.getByName(host);
         serverPort = port;
         socket = new DatagramSocket();
@@ -19,48 +24,49 @@ public class DatagramSocketClient {
         byte [] receivedData = new byte[1024];
         byte [] sendingData;
 
-        //a l'inici
         sendingData = getFirstRequest();
-        //el servidor atén el port indefinidament
-        while(mustContinue(sendingData)){
-            DatagramPacket packet = new DatagramPacket(sendingData,
-                    sendingData.length,
-                    serverIP,
-                    serverPort);
-            //enviament de la resposta
+        while (mustContinue(sendingData)) {
+            DatagramPacket packet = new DatagramPacket(sendingData,sendingData.length,serverIP,serverPort);
             socket.send(packet);
-
-            //creació del paquet per rebre les dades
-            packet = new DatagramPacket(receivedData, 1024);
-            //espera de les dades, màxim 5 segons
-            socket.setSoTimeout(5000);
-
-            //espera de les dades
+            packet = new DatagramPacket(receivedData,1024);
             socket.receive(packet);
-            //processament de les dades rebudes i obtenció de la resposta
             sendingData = getDataToRequest(packet.getData(), packet.getLength());
         }
+        socket.close();
+
     }
 
+    //Resta de conversa que se li envia al server
     private byte[] getDataToRequest(byte[] data, int length) {
-        //procés diferent per cada aplicació
-
-        return data;
+        String rebut = new String(data,0, length);
+        //Imprimeix el nom del client + el que es rep del server i demana més dades
+        System.out.print(nom+"("+rebut+")"+"> ");
+        String msg = sc.nextLine();
+        return msg.getBytes();
     }
 
+    //primer missatge que se li envia al server
     private byte[] getFirstRequest() {
-        //procés diferent per cada aplicació
-        return null;
+        System.out.println("Entra el teu nom: ");
+        nom = sc.nextLine();
+        return nom.getBytes();
     }
 
-    private boolean mustContinue(byte[] sendingData) {
-        //procés diferent per cada aplicació
-        return false;
+    //Si se li diu adeu al server, el client es desconnecta
+    public boolean mustContinue(byte [] data) {
+        String msg = new String(data).toLowerCase();
+        return !msg.equals("adeu");
     }
 
-    public void close(){
-        if(socket!=null && !socket.isClosed()){
-            socket.close();
+    public static void main(String[] args) {
+        DatagramSocketClient client = new DatagramSocketClient();
+        try {
+            client.init("localhost",5555);
+            client.runClient();
+        } catch (IOException e) {
+            e.getStackTrace();
         }
+
     }
+
 }

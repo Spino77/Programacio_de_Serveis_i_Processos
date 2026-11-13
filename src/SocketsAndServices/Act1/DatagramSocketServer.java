@@ -8,7 +8,9 @@ import java.net.SocketException;
 
 public class DatagramSocketServer {
     DatagramSocket socket;
+    InetAddress clientIP;
 
+    //Instanciar el socket
     public void init(int port) throws SocketException {
         socket = new DatagramSocket(port);
     }
@@ -16,37 +18,40 @@ public class DatagramSocketServer {
     public void runServer() throws IOException {
         byte [] receivingData = new byte[1024];
         byte [] sendingData;
-        InetAddress clientIP;
+
         int clientPort;
 
-        //el servidor atén el port indefinidament
-        while(true){
-            //creació del paquet per rebre les dades
-            DatagramPacket packet = new DatagramPacket(receivingData, 1024);
-            //espera de les dades
+        while(true) {
+            DatagramPacket packet = new DatagramPacket(receivingData,1024);
             socket.receive(packet);
-            //processament de les dades rebudes i obtenció de la resposta
-            sendingData = processData(packet.getData(), packet.getLength());
-            //obtenció de l'adreça del client
             clientIP = packet.getAddress();
-            //obtenció del port del client
+            sendingData = processData(packet.getData(),packet.getLength());
+            //Llegim el port i l'adreça del client per on se li ha d'enviar la resposta
             clientPort = packet.getPort();
-            //creació del paquet per enviar la resposta
-            packet = new DatagramPacket(sendingData, sendingData.length,
-                    clientIP, clientPort);
-            //enviament de la resposta
+            packet = new DatagramPacket(sendingData,sendingData.length,clientIP,clientPort);
             socket.send(packet);
         }
     }
 
-    private byte[] processData(byte[] data, int length) {
-        //procés diferent per cada aplicació
-        return null;
+    //El server retorna al client el mateix missatge que li arriba però en majúscules
+    private byte[] processData(byte[] data, int lenght) {
+        String msg = new String(data,0,lenght);
+        msg = msg.toUpperCase();
+        //Imprimir el missatge rebut i retornar-lo
+        System.out.printf("(%s) %s%n",clientIP,msg);
+
+        return msg.getBytes();
     }
 
-    public void close(){
-        if(socket!=null && !socket.isClosed()){
-            socket.close();
+    public static void main(String[] args) {
+        DatagramSocketServer server = new DatagramSocketServer();
+        try {
+            server.init(5555);
+            server.runServer();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
 }
