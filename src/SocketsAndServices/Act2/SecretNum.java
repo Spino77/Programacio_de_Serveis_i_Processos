@@ -21,6 +21,7 @@ public class SecretNum {
      * @param max
      */
     public void pensa(int max) {
+
         setNum((int) ((Math.random()*max)+1));
         //System.out.println("He pensat el " + getNum());
     }
